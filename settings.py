@@ -10,9 +10,12 @@ FAULT_INJECTION_ITERATION = 998 # 故障注入发生的迭代次数
 FIRST_INJECTION_TRANSACTIONS = 5000  # 第一个故障注入的事务数
 SECOND_INJECTION_TRANSACTIONS = 2000 # 第二个故障注入的事务数（用于两阶段注入）
 
+# 故障注入时间设置
+FIRST_INJECTION_TIME = 10  # 第一个故障注入的时间（秒）
+SECOND_INJECTION_TIME = FIRST_INJECTION_TIME / 2   # 第二个故障注入的时间（秒）
+
 # 故障注入类型
 # 选择: 'single_injection', 'two_phase_injection',
-# 'multi_table_delete_fault_injection', 'multi_table_price_fault_injection'   #删除
 # ‘long_fault','none'
 FAULT_MODE = 'multi_table_price_fault_injection'
 
@@ -26,7 +29,7 @@ TRANSACTION_RATIOS = {
     'modify_product_price_multi_table': 10
 }
 
-# 基础数据量设置  #修改
-BASE_NUM_USERS = K_WORKERS * 10  # 用户数目
-BASE_NUM_PRODUCTS = K_WORKERS * 20  # 商品数目
-BASE_NUM_ORDERS = K_WORKERS * 40  # 订单数目
+# 基础数据量设置  
+BASE_NUM_USERS = 10  # 用户数目
+BASE_NUM_PRODUCTS = BASE_NUM_USERS * 20  # 商品数目
+BASE_NUM_ORDERS = BASE_NUM_USERS * 40  # 订单数目
